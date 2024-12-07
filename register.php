@@ -9,6 +9,8 @@ if (isset($_POST['signUp'])) {
     $lastName = $_POST['lName'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $student_number = $_POST['student_number'];
+
     $password = md5($password);
 
     // Check if the email already exists in the database
@@ -21,8 +23,8 @@ if (isset($_POST['signUp'])) {
         
     } else {
         // If email does not exist, proceed to insert the user
-        $insertQuery = "INSERT INTO users(firstName, lastName, email, password) 
-                        VALUES ('$firstName', '$lastName', '$email', '$password')";
+        $insertQuery = "INSERT INTO users(firstName, lastName, email, student_number,password) 
+                        VALUES ('$firstName', '$lastName', '$email', '$password','$student_number')";
         if ($conn->query($insertQuery) === TRUE) {
             // Set success message 
             $Signupmessage = "Sign Up Successful!";
